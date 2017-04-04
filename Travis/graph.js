@@ -2,17 +2,20 @@ const CHART=document.getElementById("lineChart");
 //console.log(CHART);
 var numberOfDataPoints = 30;//this is the number of data points for the graph. (i.e. number of elements in the y axis)
 
+//initialize the x axis-time
 var timeArray = new Array(numberOfDataPoints);
 for(count=0; count<numberOfDataPoints; count++){
 	timeArray[count]=count.toString();
 }
 
+//initialize the y axis with random data-maybe change this later
 var dataArray = new Array(numberOfDataPoints);
 for(count=0; count<numberOfDataPoints; count++){
 	dataArray[count]=(Math.random()*100)+1;//random number between 1 and 100 (math.random outputs a number between 0-1)
 }
 
 
+//create the chart for the data
 let lineChart = new Chart(CHART,{
 	type: 'line',
 	data: {
@@ -43,14 +46,7 @@ let lineChart = new Chart(CHART,{
 		]
 		
 	},
-	options: {
-          /*  responsive: true,
-            hover: {
-              mode: 'dataset'
-            },
-          legend: {
-            display: true
-          },*/
+	options: {//this is the area where we can have x and y labels
             scales: {
                 xAxes: [{//x axis label
                     display: true,
@@ -59,7 +55,7 @@ let lineChart = new Chart(CHART,{
                     labelString: 'Time (seconds)'
                   }
                 }],
-                yAxes: [{
+                yAxes: [{//y axis label
                     display: true,
                   scaleLabel: {
                     display: true,
@@ -75,7 +71,7 @@ let lineChart = new Chart(CHART,{
 //update the array values to update the graph
 setInterval(function(){
 	dataArray.shift();
-	dataArray[numberOfDataPoints-1]=(Math.random()*100)+1;//new data point at end of array
+	dataArray[numberOfDataPoints-1]=(Math.random()*100)+1;//new data point at end of array (random number)
 
 	timeArray.shift();
 	timeArray[numberOfDataPoints-1]=(parseInt(timeArray[numberOfDataPoints-2])+1).toString();//increment the time by 1

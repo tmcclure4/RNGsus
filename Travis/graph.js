@@ -11,7 +11,7 @@ for(count=0; count<numberOfDataPoints; count++){
 //initialize the y axis with random data-maybe change this later
 var dataArray = new Array(numberOfDataPoints);
 for(count=0; count<numberOfDataPoints; count++){
-	dataArray[count]=(Math.random()*100)+1;//random number between 1 and 100 (math.random outputs a number between 0-1)
+	dataArray[count]=(Math.random()*100);//random number between 1 and 100 (math.random outputs a number between 0-1)
 }
 
 
@@ -71,7 +71,7 @@ let lineChart = new Chart(CHART,{
 //update the array values to update the graph
 setInterval(function(){
 	dataArray.shift();
-	dataArray[numberOfDataPoints-1]=(Math.random()*100)+1;//new data point at end of array (random number)
+	dataArray[numberOfDataPoints-1]=(Math.random()*100);//new data point at end of array (random number)
 
 	timeArray.shift();
 	timeArray[numberOfDataPoints-1]=(parseInt(timeArray[numberOfDataPoints-2])+1).toString();//increment the time by 1

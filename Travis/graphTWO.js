@@ -88,7 +88,10 @@ setInterval(function(){
 	data[2].minuteDataAverage=getMinuteAvg(removedElementsTWO,totalDataPointsTWO,minuteDataTWO).toFixed(4);
 	//data[2].hourDataAverage=getHourAvg(dataArrayTWO);
 	data[2].totalDataAverage=(totalDataTWO/totalDataPointsTWO).toFixed(4);
-	
+	if(totalDataPointsTWO>60){
+		minuteDataTWO-=removedElementsTWO[0];
+		removedElementsTWO.shift();
+	}
 	lineChartTWO.update();//update the graph
 	
 	

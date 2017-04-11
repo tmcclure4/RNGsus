@@ -21,7 +21,7 @@ let lineChartTWO = new Chart(CHARTTWO,{
 		datasets: [
 			{
 				label: "Sensor Data One",
-				fill: false,
+				fill: true,
 				lineTension: 0.1,
 				backgroundColor: "rgba(75,192,192,0.4)",
 				borderColor: "rgba(75,192,192,1)",
@@ -69,8 +69,16 @@ setInterval(function(){
 	dataArrayTWO.shift();
 	dataArrayTWO[numberOfDataPoints-1]=(Math.random()*50);//new data point at end of array (random number)
 
+	
 	timeArrayTWO.shift();
 	timeArrayTWO[numberOfDataPoints-1]=(parseInt(timeArray[numberOfDataPoints-2])+1).toString();//increment the time by 1
+	data[2].currentData=(dataArrayTWO[numberOfDataPoints-1]).toFixed(4);
+	data[2].minuteDataAverage=getMinuteAvg(dataArrayTWO);
+	data[2].hourDataAverage=getHourAvg(dataArrayTWO);
+	data[2].totalDataAverage=getTotalAvg(dataArrayTWO);
 	
 	lineChartTWO.update();//update the graph
+	
+	
+	//table.row(1).invalidate().draw();
 },1000);

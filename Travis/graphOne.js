@@ -21,7 +21,7 @@ let lineChartONE = new Chart(CHARTONE,{
 		datasets: [
 			{
 				label: "Sensor Data One",
-				fill: false,
+				fill: true,
 				lineTension: 0.1,
 				backgroundColor: "rgba(75,192,192,0.4)",
 				borderColor: "rgba(75,192,192,1)",
@@ -68,9 +68,16 @@ let lineChartONE = new Chart(CHARTONE,{
 setInterval(function(){
 	dataArrayONE.shift();
 	dataArrayONE[numberOfDataPoints-1]=(Math.random()*10);//new data point at end of array (random number)
-
+	totalData.push(dataArrayONE[numberOfDataPoints-2]);
 	timeArrayONE.shift();
 	timeArrayONE[numberOfDataPoints-1]=(parseInt(timeArray[numberOfDataPoints-2])+2).toString();//increment the time by 1
 	
+	data[1].currentData=(dataArrayONE[numberOfDataPoints-1]).toFixed(4);
+	data[1].minuteDataAverage=getMinuteAvg(dataArrayONE);
+	data[1].hourDataAverage=getHourAvg(dataArrayONE);
+	data[1].totalDataAverage=getTotalAvg(dataArrayONE);
 	lineChartONE.update();//update the graph
+	
+	
+	//table.row(0).invalidate().draw();
 },1000);

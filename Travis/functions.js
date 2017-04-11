@@ -1,11 +1,10 @@
-var dataCount=0;
 
-function getDataIfLessThanExpected(tempDataArray){
+function getDataIfLessThanExpected(tempDataArray, totalDataPoints){
 	var sum=0;
 	tempDataArray.forEach(function(dataValue){
 			sum+=parseInt(dataValue);
 	});
-	return (sum/tempDataArray.length).toFixed(4);	
+	return (sum/totalDataPoints).toFixed(4);	
 }
 
 
@@ -18,22 +17,25 @@ function getSpecificAvg(numToAvg, specificDataArray){
 }
 
 
-function getMinuteAvg(minuteDataArray){
+function getMinuteAvg(minuteDataArray, totalDataPoints, totalData){
 	var minuteAverage=0;
-	if(minuteDataArray.length<=60){
-		minuteAverage=getDataIfLessThanExpected(minuteDataArray);
+	if(totalDataPoints<=60){
+		minuteAverage=totalData/totalDataPoints;
+		//minuteAverage=getDataIfLessThanExpected(minuteDataArray,totalDataPoints);
 	}
 	else{
-		minuteAverage=getSpecificAvg(60,minuteDataArray);
+		minuteAverage=(totalData-minuteDataArray[0])/60;
+		//minuteAverage=getSpecificAvg(60,minuteDataArray);
 	}
 	return minuteAverage;
 }
 
-function getHourAvg(hourDataArray){
+function getHourAvg(hourDataArray, totalDataPoints,totalData){
 	var hourAverage=0;
 	//less than an hour
 	if(hourDataArray.length<3600){
-		hourAverage=getDataIfLessThanExpected(hourDataArray);
+		hourAverage=totalData/totalDataPoints;
+		//hourAverage=getDataIfLessThanExpected(hourDataArray, totalDataPoints);
 	}
 	else{//more than an hour
 		hourAverage=getSpecificAvg(3600,hourDataArray);

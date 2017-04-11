@@ -3,7 +3,8 @@ const CHART=document.getElementById("lineChart");
 var numberOfDataPoints = 30;//this is the number of data points for the graph. (i.e. number of elements in the y axis)
 var totalData=0;
 var totalDataPoints=0;
-
+var removedElements = new Array(0);
+var minuteData=0;
 //initialize the x axis-time
 var timeArray = new Array(numberOfDataPoints);
 for(count=0; count<numberOfDataPoints; count++){
@@ -15,7 +16,8 @@ for(count=0; count<numberOfDataPoints; count++){
 var dataArray = new Array(numberOfDataPoints);
 for(count=0; count<numberOfDataPoints; count++){
 	dataArray[count]=(Math.random()*100);//random number between 1 and 100 (math.random outputs a number between 0-1)
-	totalData+=dataArray[count]
+	totalData+=dataArray[count];
+	minuteData+=dataArray[count];
 }
 
 
@@ -74,18 +76,24 @@ let lineChart = new Chart(CHART,{
 //the following function occurs every one second
 //update the array values to update the graph
 setInterval(function(){
+	removedElements.push(dataArray[0]);
 	dataArray.shift();
 	dataArray[numberOfDataPoints-1]=(Math.random()*100);//new data point at end of array (random number)
 	totalData+=dataArray[numberOfDataPoints-1];
-	
+	minuteData+=dataArray[numberOfDataPoints-1];
 	timeArray.shift();
 	timeArray[numberOfDataPoints-1]=(parseInt(timeArray[numberOfDataPoints-2])+1).toString();//increment the time by 1
 	totalDataPoints++;
 	
 	data[0].currentData=(dataArray[numberOfDataPoints-1]).toFixed(4);
-	data[0].minuteDataAverage=getMinuteAvg(dataArray);
-	data[0].hourDataAverage=getHourAvg(dataArray);
+	data[0].minuteDataAverage=getMinuteAvg(removedElements, totalDataPoints,minuteData).toFixed(4);
+	//data[0].hourDataAverage=getHourAvg(removedElements, totalDataPoints, minuteData).toFixed(4);
 	data[0].totalDataAverage=(totalData/totalDataPoints).toFixed(4);
+	if(totalDataPoints>60){
+		minuteData-=removedElements[0];
+		removedElements.shift();
+	}
+	
 	lineChart.update();//update the graph
 	
 	

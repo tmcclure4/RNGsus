@@ -1,9 +1,9 @@
 
 
 var data = [
-    { "sensor" : "Lumosity", "currentData" : "0", "minuteDataAverage": "0", "hourDataAverage": "0", "totalDataAverage": "0" },
-	{ "sensor" : "Speed", "currentData" : "0", "minuteDataAverage": "0", "hourDataAverage": "0","totalDataAverage": "0" },
-	{ "sensor" : "Temperature", "currentData" : "0", "minuteDataAverage": "0", "hourDataAverage": "0", "totalDataAverage": "0" }
+    { "sensor" : "Lumosity", "currentData" : "0", "minuteDataAverage": "0", "totalDataAverage": "0" },
+	{ "sensor" : "Speed", "currentData" : "0", "minuteDataAverage": "0", "totalDataAverage": "0" },
+	{ "sensor" : "Temperature", "currentData" : "0", "minuteDataAverage": "0", "totalDataAverage": "0" }
 ];
     
 var table = $('#example').DataTable({ 
@@ -12,7 +12,7 @@ var table = $('#example').DataTable({
         { data : "sensor", title :'Sensor' },
         { data : "currentData", title : 'Current Data' },
 		{ data : "minuteDataAverage", title : 'Minute Data Average'},
-		{ data : "hourDataAverage", title : 'Hour Data Average'},
+		//{ data : "hourDataAverage", title : 'Hour Data Average'},
 		{ data : "totalDataAverage", title : 'Total Data Average'}
     ]
 })

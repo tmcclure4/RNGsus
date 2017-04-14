@@ -1,8 +1,10 @@
 TESTER = document.getElementById('tester');
 
 function rand() {
-  return Math.floor((Math.random() * 100) + 1);
-}
+  //return Math.floor((Math.random() * 100) + 1);
+
+  return Math.sin(Date.now()/10000);
+  }
 
 var sensor1 = {
 	y: [10, 15, 13, 17].map(rand),
@@ -13,7 +15,8 @@ var sensor1 = {
 var sensor2 = {
 	y: [16, 5, 11, 9].map(rand),
 	name: 'Individual Sensor 2',
-	type: 'scatter'
+	type: 'scatter',
+	fill: 'tozeroy',
 };
 
 var data = [sensor1, sensor2];
@@ -46,10 +49,10 @@ console.log( Plotly.BUILD );
 var cnt = 0;
 var interval = setInterval(function() {
   Plotly.extendTraces('tester', {
-    y: [[rand()], [rand()]]
+    y: [[rand()], [-rand()]]
   }, [0, 1])
 
   cnt = cnt+1;
-  if(cnt === 100) clearInterval(interval);
-}, 1000);
+  if(cnt === 200) clearInterval(interval);
+}, 500);
 

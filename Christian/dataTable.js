@@ -23,6 +23,7 @@ setInterval(function(){
 	table.row(2).invalidate().draw();
 	//table.row(3).invalidate().draw();
 	//table.fnDraw();
+	//testFn(tester.data);
 },1000);
 
  

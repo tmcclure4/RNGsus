@@ -7,13 +7,13 @@ function rand() {
   }
 
 var sensor1 = {
-	y: [10, 15, 13, 17].map(rand),
+	y: [].map(rand),
 	name: 'Individual Sensor 1',
 	type: 'scatter'
 };
 
 var sensor2 = {
-	y: [16, 5, 11, 9].map(rand),
+	y: [].map(rand),
 	name: 'Individual Sensor 2',
 	type: 'scatter',
 	fill: 'tozeroy',
@@ -53,6 +53,6 @@ var interval = setInterval(function() {
   }, [0, 1])
 
   cnt = cnt+1;
-  if(cnt === 200) clearInterval(interval);
-}, 500);
+  if(cnt === 100) clearInterval(interval);
+}, 1000);
 

@@ -1,9 +1,0 @@
-.container{
-    display: flex;
-}
-.fixed{
-    width: 600px;
-}
-.flex-item{
-    flex-grow: 1;
-}

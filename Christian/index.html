@@ -11,6 +11,7 @@
 		<script src ="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 		<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap4.min.js"></script>
 		<script src="plotly-latest.min.js"></script>
+		<script src="functions.js"></script>
 		
 	</head>
 
@@ -25,12 +26,13 @@
 			  <li class="active"><a data-toggle="pill" href="#home">Lumosity</a></li>
 			  <li><a data-toggle="pill" href="#menu1">Speed</a></li>
 			  <li><a data-toggle="pill" href="#menu2">Temperature</a></li>
+			  <li><a data-toggle="pill" href="#menu3">Other</a></li>
 			</ul>
 			
 			<!--this holds the tab information-->
 			<div class="tab-content">
 				<div id="home" class="tab-pane fade in active">
-					<div id="tester" style="width:90%;height:400px;">
+					<div id="tester" style="width:90%;height:90%;">
 						<script src="graph.js"></script>	
 					</div>
 				</div>
@@ -42,6 +44,11 @@
 				<div id="menu2" class="tab-pane fade">
 					<div id="tester2" style="width:1000px;height:400px;">
 						<script src="graph2.js"></script>	
+					</div>
+				</div>
+				<div id="menu3" class="tab-pane fade">
+					<div id="tester3" style="width:1000px;height:400px;">
+						<script src="graph3.js"></script>	
 					</div>
 				</div>
 			</div>

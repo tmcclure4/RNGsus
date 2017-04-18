@@ -43,17 +43,14 @@ function getHourAvg(hourDataArray, totalDataPoints,totalData){
 	return hourAverage;
 }
 
-//see if this works
-/*function getTotalAvg(totalDataArray){
-	return getDataIfLessThanExpected(totalDataArray);
-}*/
-
-/*
-function getMinAvgPlotly(data_array) {
-	var minuteAverage = 0;
-	
-	if (data_array[0].length < 60) {
-		
+//see if this works. It does.
+function testFn(data) {
+	var total = 0;
+	for (i = 0; i < data[0].y.length; i++) {
+		total += data[0].y[i];
 	}
+	var avg = total/data[0].y.length;
+	console.log(avg);
+	return avg;
+	
 }
-*/
